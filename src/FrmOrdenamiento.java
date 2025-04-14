@@ -122,11 +122,18 @@ public class FrmOrdenamiento extends JFrame {
     }
 
     private void btnOrdenarInsercionClick(ActionEvent evt) {
-
+        if (cmbCriterio.getSelectedIndex() >= 0) {
+            Util.iniciarCronometro();
+            Documento.ordenarInsercion(cmbCriterio.getSelectedIndex());
+            txtTiempo.setText(Util.getTextoTiempoCronometro());
+            Documento.mostrar(tblDocumentos);
+        } else {
+            JOptionPane.showMessageDialog(null, "Elija el criterio de ordenamiento");
+        }
     }
 
     private void btnBuscar(ActionEvent evt) {
 
     }
-
+    
 }

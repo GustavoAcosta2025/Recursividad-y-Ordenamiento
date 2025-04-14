@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -149,4 +148,19 @@ public class Documento {
         ordenarRapido(pivote + 1, fin, criterio); // ordenar los mayores a la posicion PIVOTE
     }
 
+    //metodo insersion
+    public static void ordenarInsercion(int criterio) {
+        for (int i = 1; i < documentos.size(); i++) {
+            Documento actual = documentos.get(i);
+            int j = i - 1;
+    
+            while (j >= 0 && esMayor(documentos.get(j), actual, criterio)) {
+                documentos.set(j + 1, documentos.get(j));
+                j--;
+            }
+    
+            documentos.set(j + 1, actual);
+        }
+    }
+    
 }
